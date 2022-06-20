@@ -1,0 +1,47 @@
+[
+  {
+    "image": "${image_url}",
+    "essential": true,
+    "name": "${container_name}",
+    "database_url":"$(database_url)",
+    "portMappings": [
+      {
+        "containerPort": 80
+      }  
+    ],
+
+    "environment": [
+      {
+        "name": "APP_KEY",
+        "value": "base64:3ilviXqB9u6DX1NRcyWGJ+sjySF+H18CPDGb3+IVwMQ="
+      },
+      {
+        "name": "APP_URL",
+        "value": "https://assetsmgmt.Date.co"
+      },
+      {
+        "name": "DB_HOST",
+        "value": "${rds_endpoint}"
+      }
+    ],
+
+    "secrets": [
+      {
+        "name": "DB_PORT",
+        "valueFrom": "arn:aws:ssm:us-east-1:033333781728:parameter/example/prod/rds/master-dbport"
+      },
+      {
+        "name": "DB_DATABASE",
+        "valueFrom": "arn:aws:ssm:us-east-1:033333781728:parameter/example/prod/rds/master-dbname"
+      },
+      {
+        "name": "DB_USERNAME",
+        "valueFrom": "arn:aws:ssm:us-east-1:033333781728:parameter/example/prod/rds/master-username"
+      },
+      {
+        "name": "DB_PASSWORD",
+        "valueFrom": "arn:aws:ssm:us-east-1:033333781728:parameter/example/prod/rds/master-password"
+      }
+    ]
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "image": "${image_url}",
+    "essential": true,
+    "name": "${container_name}",
+    "portMappings": [
+      {
+        "containerPort": 8080
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "example-cloudwatch-logs",
+        "awslogs-region": "us-east-1",
+        "awslogs-create-group": "true",
+        "awslogs-stream-prefix": "prod"
+        
+      }
+    },
+    "mountPoints": [
+      {
+        "containerPath": "/var/example_home",
+        "sourceVolume": "Date-example"
+      }
+    ]
+  }
+]
